@@ -9,8 +9,8 @@ describe "4dpreferences grammar", ->
       atom.packages.activatePackage("language-4dpreferences")
 
     runs ->
-      grammar = atom.syntax.grammarForScopeName("source.4dpreferences")
+      grammar = atom.syntax.grammarForScopeName("source.4dsettings")
 
   it "parses the grammar", ->
     expect(grammar).toBeTruthy()
-    expect(grammar.scopeName).toBe "source.4dpreferences"
+    expect(grammar.scopeName).toBe "source.4dsettings"
