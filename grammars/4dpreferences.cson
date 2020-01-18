@@ -1,0 +1,70 @@
+# If this is your first time writing a language grammar, check out:
+#   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
+
+'scopeName': 'source.4dpreferences'
+'name': '4dcatalog'
+'type': 'tree-sitter'
+'parser': 'tree-sitter-4dpreferences'
+
+'fileTypes': [
+  '4DPreferences'
+  '4DSettings'
+]
+
+folds: [
+  {
+    type: ['start_tag', 'raw_start_tag', 'self_closing_tag'],
+    start: {index: 1},
+    end: {index: -1}
+  }
+  {
+    type: ['element', 'raw_element'],
+    start: {index: 0},
+    end: {index: -1}
+  }
+]
+
+comments:
+  start: '<!--'
+  end: '-->'
+
+scopes:
+  'fragment': 'source.4dpreferences'
+  'tag_name': 'entity.name.tag'
+  'erroneous_end_tag_name': 'invalid.illegal'
+  'doctype': 'meta.tag.doctype.html'
+  'attribute_name': 'entity.other.attribute-name'
+  'attribute_value': 'string.html'
+  'comment': 'comment.block.html'
+
+  '
+    start_tag > "<",
+    end_tag > "</"
+  ': 'punctuation.definition.tag.begin'
+
+  '
+    start_tag > ">",
+    end_tag > ">"
+  ': 'punctuation.definition.tag.end'
+
+  '
+    self_closing_tag > "<"
+  ': 'punctuation.definition.tag.begin'
+
+  '
+    self_closing_tag > "/>",
+    self_closing_tag > "/ >"
+  ': 'punctuation.definition.tag.end'
+
+  'attribute > "="': 'punctuation.separator.key-value.html'
+
+  'quoted_attribute_value_empty': 'punctuation.definition.string'
+
+  # quoted_attribute_value has three child nodes: ", attribute_value, and ".
+  # Target the first and last.
+  # Single quotes and double quotes are targeted in separate selectors because
+  # of quote-escaping difficulties.
+  "quoted_attribute_value > '\"':nth-child(0)": 'punctuation.definition.string.begin'
+  'quoted_attribute_value > "\'":nth-child(0)': 'punctuation.definition.string.begin'
+  "quoted_attribute_value > '\"':nth-child(2)": 'punctuation.definition.string.end'
+  'quoted_attribute_value > "\'":nth-child(2)': 'punctuation.definition.string.end'
