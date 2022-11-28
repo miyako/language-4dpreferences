@@ -1,6 +1,6 @@
 {
   "name": "language-4dpreferences",
-  "version": "0.15.4",
+  "version": "0.16.0",
   "description": "4D language support in Atom",
   "keywords": [
     "language",
