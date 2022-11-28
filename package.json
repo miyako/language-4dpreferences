@@ -14,11 +14,11 @@
   },
   "dependencies": {
     "nan": "^2.14.0",
-    "node-gyp": "^6.0.1",
+    "node-gyp": "^6.1.0",
     "tree-sitter": "^0.16.0",
     "tree-sitter-4dxml": "^0.4.2"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.15.14"
+    "tree-sitter-cli": "^0.16.9"
   }
 }
